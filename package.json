@@ -1,0 +1,27 @@
+{
+  "name": "cls",
+  "version": "1.0.0",
+  "description": "Test electron setup",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michaelrs11/trial-electron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michaelrs11/trial-electron/issues"
+  },
+  "homepage": "https://github.com/Michaelrs11/trial-electron#readme",
+  "dependencies": {
+    "electron": "^22.1.0",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10"
+  }
+}
