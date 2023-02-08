@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Michaelrs11/trial-electron#readme",
   "dependencies": {
     "electron": "^22.1.0",
+    "pdf-to-printer": "^5.5.0",
     "typescript": "^4.9.4"
   },
   "devDependencies": {

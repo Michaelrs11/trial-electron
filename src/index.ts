@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, BrowserView, ipcMain, shell, dialog } from 'electron';
 import path from 'path';
+import { print } from 'pdf-to-printer';
 
 let mainWindow : BrowserWindow;
 let view: BrowserView;
@@ -24,7 +25,7 @@ if (!gotTheLock) {
       if (mainWindow.isMinimized()) mainWindow.restore()
       mainWindow.focus()
     }
-    
+    dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()?.slice(0, -1)}`)
   })
 
   // Create mainWindow, load the rest of the app, etc...
@@ -35,6 +36,10 @@ if (!gotTheLock) {
   app.on('open-url', (event, url) => {
     dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
   })
+}
+
+const options = {
+  silent: true
 }
 
 function createWindow () : void {
@@ -51,8 +56,10 @@ function createWindow () : void {
     view = new BrowserView();
     mainWindow.setBrowserView(view);
     view.setBounds({ x: 0, y: 0, width: 1200, height: 600 })
-    view.webContents.loadURL('http://localhost:31776/')
+    view.webContents.loadURL('https://www.google.com/')
     
+    print("C:/Users/Michael Riandy/Documents/Accelist/Project/E-Faktur/PDF/AA.Pdf", options);
+
     mainWindow.loadFile("./index.html");
     mainWindow.on("ready-to-show", () => mainWindow.show());
 }
@@ -70,3 +77,4 @@ ipcMain.on('shell:open', () => {
   const pagePath = path.join('file://', pageDirectory, 'index.html')
   shell.openExternal(pagePath)
 })
+
